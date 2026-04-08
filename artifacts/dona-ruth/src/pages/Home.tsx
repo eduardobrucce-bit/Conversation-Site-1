@@ -32,7 +32,7 @@ export default function Home() {
       <header className="absolute top-0 w-full z-50 py-4 px-6 md:px-12 flex justify-center items-center">
         <img
           src="/logo.png?v=10"
-          alt="Dona Ruth Moda Plus Size"
+          alt="Dona Ruth Moda Feminina"
           className="h-20 md:h-28 w-auto object-contain"
         />
       </header>
@@ -49,14 +49,14 @@ export default function Home() {
             initial="hidden" animate="visible" variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-primary/20 text-primary font-medium text-sm mb-8 shadow-sm"
           >
-            <Star className="w-4 h-4" /> Moda Plus Size em Goiânia
+            <Star className="w-4 h-4" /> Moda Feminina em Goiânia
           </motion.div>
           
           <motion.h1 
             initial="hidden" animate="visible" variants={fadeInUp} transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[1.1] mb-6 text-foreground"
           >
-            Moda Plus Size que <br className="hidden md:block"/>
+            Moda Feminina que <br className="hidden md:block"/>
             <span className="text-primary italic">valoriza</span> sua beleza 💖
           </motion.h1>
           
@@ -93,7 +93,7 @@ export default function Home() {
           >
             <span className="flex items-center gap-2"><span className="text-primary">✔</span> Atendimento personalizado</span>
             <span className="flex items-center gap-2"><span className="text-primary">✔</span> Novidades toda semana</span>
-            <span className="flex items-center gap-2"><span className="text-primary">✔</span> Moda plus size com estilo</span>
+            <span className="flex items-center gap-2"><span className="text-primary">✔</span> Moda feminina com estilo</span>
           </motion.div>
         </div>
       </section>
@@ -107,7 +107,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Bem-vinda à Dona Ruth</h2>
           <div className="w-24 h-1 bg-primary/30 mx-auto mb-8 rounded-full" />
           <p className="text-xl leading-relaxed text-muted-foreground">
-            Somos uma loja especializada em moda feminina plus size, pensada para valorizar a autoestima e o estilo de cada mulher. Aqui você encontra roupas modernas, confortáveis e perfeitas para qualquer ocasião.
+            Somos uma loja especializada em moda feminina, pensada para valorizar a autoestima e o estilo de cada mulher. Aqui você encontra roupas modernas, confortáveis e perfeitas para qualquer ocasião.
           </p>
         </motion.div>
       </section>
@@ -359,7 +359,7 @@ export default function Home() {
           <div>
             <img
               src="/logo.png?v=10"
-              alt="Dona Ruth Moda Plus Size"
+              alt="Dona Ruth Moda Feminina"
               className="h-16 w-auto object-contain mb-1"
             />
           </div>

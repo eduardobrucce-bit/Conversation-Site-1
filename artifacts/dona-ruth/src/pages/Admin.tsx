@@ -81,7 +81,7 @@ export default function Admin() {
               <Lock className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-2xl font-serif font-bold">Painel Admin</h1>
-            <p className="text-muted-foreground mt-1">Dona Ruth Moda Plus Size</p>
+            <p className="text-muted-foreground mt-1">Dona Ruth Moda Feminina</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
