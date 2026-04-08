@@ -35,10 +35,13 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        return parsed.map((p: Product & { img?: string }) => ({
+        const normalized: Product[] = parsed.map((p: Product & { img?: string }) => ({
           ...p,
           imgs: p.imgs ?? (p.img ? [p.img] : []),
         }));
+        const storedIds = new Set(normalized.map((p) => p.id));
+        const newDefaults = DEFAULT_PRODUCTS.filter((p) => !storedIds.has(p.id));
+        return [...normalized, ...newDefaults];
       }
       return DEFAULT_PRODUCTS;
     } catch {
