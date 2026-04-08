@@ -27,7 +27,7 @@ export default function Home() {
       {/* HEADER / LOGO AREA */}
       <header className="absolute top-0 w-full z-50 py-4 px-6 md:px-12 flex justify-center items-center">
         <img
-          src="/logo.png?v=5"
+          src="/logo.png?v=10"
           alt="Dona Ruth Moda Plus Size"
           className="h-20 md:h-28 w-auto object-contain"
         />
@@ -327,7 +327,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <img
-              src="/logo.png"
+              src="/logo.png?v=10"
               alt="Dona Ruth Moda Plus Size"
               className="h-16 w-auto object-contain mb-1"
             />
