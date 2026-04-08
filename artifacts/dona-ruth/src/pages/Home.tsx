@@ -265,9 +265,16 @@ export default function Home() {
             <h2 className="text-4xl font-serif font-bold mb-8">Fale com a gente</h2>
             <div className="grid gap-6">
               <div className="p-8 rounded-3xl bg-secondary/30 border border-border flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <h3 className="font-serif text-2xl font-semibold mb-1">Carol</h3>
-                  <p className="text-muted-foreground">Vendedora Especialista</p>
+                <div className="flex items-center gap-5">
+                  <img
+                    src="/vendedora-carol.jpg"
+                    alt="Carol"
+                    className="w-20 h-20 rounded-full object-cover border-4 border-primary/30 shadow-md flex-shrink-0"
+                  />
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold mb-1">Carol</h3>
+                    <p className="text-muted-foreground">Vendedora Especialista</p>
+                  </div>
                 </div>
                 <a 
                   href={whatsappCarol} target="_blank" rel="noopener noreferrer"
@@ -278,9 +285,16 @@ export default function Home() {
               </div>
               
               <div className="p-8 rounded-3xl bg-secondary/30 border border-border flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <h3 className="font-serif text-2xl font-semibold mb-1">Vendas</h3>
-                  <p className="text-muted-foreground">Atendimento Geral</p>
+                <div className="flex items-center gap-5">
+                  <img
+                    src="/vendedora-vendas.png"
+                    alt="Vendas"
+                    className="w-20 h-20 rounded-full object-cover border-4 border-primary/30 shadow-md flex-shrink-0"
+                  />
+                  <div>
+                    <h3 className="font-serif text-2xl font-semibold mb-1">Vendas</h3>
+                    <p className="text-muted-foreground">Atendimento Geral</p>
+                  </div>
                 </div>
                 <a 
                   href={whatsappVend2} target="_blank" rel="noopener noreferrer"
