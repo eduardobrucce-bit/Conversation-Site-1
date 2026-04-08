@@ -248,14 +248,12 @@ export default function Home() {
               </div>
             </div>
             <div className="rounded-3xl overflow-hidden border border-border shadow-sm h-[300px] w-full bg-muted">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3821.5830722137976!2d-49.2783856238804!3d-16.697723984077673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef14660eb6a75%3A0xc3df3c9c61de1263!2sR.%20C-162%2C%20282%20-%20Jardim%20Am%C3%A9rica%2C%20Goi%C3%A2nia%20-%20GO%2C%2074255-110!5e0!3m2!1spt-BR!2sbr!4v1709230504782!5m2!1spt-BR!2sbr" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen={false} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-49.2884%2C-16.7077%2C-49.2684%2C-16.6877&layer=mapnik&marker=-16.6977%2C-49.2784"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
                 title="Mapa da Loja Dona Ruth"
               />
             </div>
