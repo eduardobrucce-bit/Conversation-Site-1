@@ -116,15 +116,31 @@ export default function Home() {
             {products.map((product, i) => (
               <motion.div key={i} variants={fadeInUp} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col">
                 <div className="aspect-[3/4] w-full relative overflow-hidden">
-                  <img
-                    src={product.img}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                  <span className="absolute top-4 left-4 bg-primary/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <div
+                    className="flex h-full overflow-x-auto snap-x snap-mandatory touch-pan-x"
+                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+                  >
+                    {product.imgs.map((img, idx) => (
+                      <div key={idx} className="shrink-0 w-full h-full snap-start">
+                        <img
+                          src={img}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                  <span className="absolute top-4 left-4 bg-primary/90 text-white text-xs font-semibold px-3 py-1 rounded-full pointer-events-none">
                     {product.tag}
                   </span>
+                  {product.imgs.length > 1 && (
+                    <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 pointer-events-none">
+                      {product.imgs.map((_, idx) => (
+                        <div key={idx} className="w-1.5 h-1.5 rounded-full bg-white shadow-sm opacity-80" />
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="font-serif text-lg font-semibold mb-1">{product.name}</h3>

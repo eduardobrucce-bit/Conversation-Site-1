@@ -4,21 +4,21 @@ export interface Product {
   id: number;
   name: string;
   tag: string;
-  img: string;
+  imgs: string[];
   price: string;
   sizes: string[];
 }
 
 const DEFAULT_PRODUCTS: Product[] = [
-  { id: 1, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-1.jpg", price: "R$ 189,90", sizes: ["P", "M", "G", "GG", "XGG"] },
-  { id: 2, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-2.jpg", price: "R$ 219,90", sizes: ["M", "G", "GG", "XGG"] },
-  { id: 3, name: "Conjunto Rosa",          tag: "Destaque",    img: "/peca-3.jpg", price: "R$ 259,90", sizes: ["P", "M", "G", "GG"] },
-  { id: 4, name: "Coleção In Rio",         tag: "In Rio",      img: "/peca-4.jpg", price: "R$ 179,90", sizes: ["P", "M", "G", "GG", "XGG"] },
-  { id: 5, name: "Queridinho da Dona Ruth",tag: "Queridinho",  img: "/peca-5.jpg", price: "R$ 299,90", sizes: ["G", "GG", "XGG"] },
-  { id: 6, name: "Coleção In Rio",         tag: "In Rio",      img: "/peca-6.jpg", price: "R$ 199,90", sizes: ["P", "M", "G", "GG", "XGG"] },
+  { id: 1, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-1.jpg"], price: "R$ 189,90", sizes: ["P", "M", "G", "GG", "XGG"] },
+  { id: 2, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-2.jpg"], price: "R$ 219,90", sizes: ["M", "G", "GG", "XGG"] },
+  { id: 3, name: "Conjunto Rosa",          tag: "Destaque",    imgs: ["/peca-3.jpg"], price: "R$ 259,90", sizes: ["P", "M", "G", "GG"] },
+  { id: 4, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-4.jpg"], price: "R$ 179,90", sizes: ["P", "M", "G", "GG", "XGG"] },
+  { id: 5, name: "Queridinho da Dona Ruth",tag: "Queridinho",  imgs: ["/peca-5.jpg"], price: "R$ 299,90", sizes: ["G", "GG", "XGG"] },
+  { id: 6, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-6.jpg"], price: "R$ 199,90", sizes: ["P", "M", "G", "GG", "XGG"] },
 ];
 
-const STORAGE_KEY = "dona-ruth-products-v2";
+const STORAGE_KEY = "dona-ruth-products-v3";
 
 interface ProductsContextType {
   products: Product[];
@@ -32,7 +32,14 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<Product[]>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : DEFAULT_PRODUCTS;
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        return parsed.map((p: Product & { img?: string }) => ({
+          ...p,
+          imgs: p.imgs ?? (p.img ? [p.img] : []),
+        }));
+      }
+      return DEFAULT_PRODUCTS;
     } catch {
       return DEFAULT_PRODUCTS;
     }

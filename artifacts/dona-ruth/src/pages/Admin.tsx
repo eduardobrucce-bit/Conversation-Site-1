@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useLocation } from "wouter";
 import { useProducts, Product } from "@/context/ProductsContext";
-import { Lock, LogOut, Upload, RotateCcw, CheckCircle, Eye, X } from "lucide-react";
+import { Lock, LogOut, Upload, RotateCcw, CheckCircle, Eye, X, Plus } from "lucide-react";
 
 const ADMIN_PASSWORD = "donaruth2024";
 
@@ -44,13 +44,25 @@ export default function Admin() {
     setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, sizes } : p)));
   }
 
-  function handleImageUpload(id: number, file: File) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, img: dataUrl } : p)));
-    };
-    reader.readAsDataURL(file);
+  function handleImageUpload(id: number, files: FileList) {
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        setDrafts((prev) =>
+          prev.map((p) => (p.id === id ? { ...p, imgs: [...p.imgs, dataUrl] } : p))
+        );
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function handleRemoveImage(id: number, imgIdx: number) {
+    setDrafts((prev) =>
+      prev.map((p) =>
+        p.id === id ? { ...p, imgs: p.imgs.filter((_, i) => i !== imgIdx) } : p
+      )
+    );
   }
 
   function handleSave() {
@@ -173,39 +185,61 @@ export default function Admin() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {drafts.map((product, i) => (
             <div key={product.id} className="bg-white rounded-3xl overflow-hidden border border-border shadow-sm">
-              <div className="relative aspect-[3/4] bg-secondary/20 overflow-hidden">
-                <img
-                  src={product.img}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center gap-3 opacity-0 hover:opacity-100 transition-opacity">
+
+              {/* Galeria de fotos com scroll horizontal */}
+              <div className="p-3 bg-secondary/10">
+                <div
+                  className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+                >
+                  {product.imgs.map((img, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative shrink-0 w-28 h-36 rounded-xl overflow-hidden snap-start border border-border"
+                    >
+                      <img
+                        src={img}
+                        alt=""
+                        className="w-full h-full object-cover cursor-pointer"
+                        onClick={() => setPreviewImg(img)}
+                      />
+                      <button
+                        onClick={() => handleRemoveImage(product.id, imgIdx)}
+                        className="absolute top-1 right-1 bg-black/60 text-white rounded-full w-5 h-5 flex items-center justify-center hover:bg-red-600 transition-colors"
+                        title="Remover foto"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+
+                  {/* Botão adicionar foto */}
                   <button
                     onClick={() => fileRefs.current[i]?.click()}
-                    className="flex items-center gap-2 bg-white text-foreground text-sm font-medium px-4 py-2 rounded-full shadow hover:bg-primary hover:text-white transition-colors"
+                    className="shrink-0 w-28 h-36 rounded-xl border-2 border-dashed border-border flex flex-col items-center justify-center gap-2 text-muted-foreground hover:border-primary hover:text-primary active:border-primary active:text-primary transition-colors snap-start"
                   >
-                    <Upload className="w-4 h-4" /> Trocar foto
-                  </button>
-                  <button
-                    onClick={() => setPreviewImg(product.img)}
-                    className="flex items-center gap-2 bg-white/80 text-foreground text-sm px-4 py-2 rounded-full shadow hover:bg-white transition-colors"
-                  >
-                    <Eye className="w-4 h-4" /> Ver foto
+                    <Plus className="w-6 h-6" />
+                    <span className="text-xs font-medium text-center leading-tight">Adicionar<br />foto</span>
                   </button>
                 </div>
+
                 <input
                   ref={(el) => { fileRefs.current[i] = el; }}
                   type="file"
                   accept="image/*"
+                  multiple
                   className="hidden"
                   onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) handleImageUpload(product.id, file);
+                    if (e.target.files?.length) {
+                      handleImageUpload(product.id, e.target.files);
+                      e.target.value = "";
+                    }
                   }}
                 />
-                <span className="absolute top-3 left-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
-                  Peça {product.id}
-                </span>
+
+                <p className="text-xs text-muted-foreground mt-2">
+                  Peça {product.id} · {product.imgs.length} foto{product.imgs.length !== 1 ? "s" : ""} · deslize para ver todas
+                </p>
               </div>
 
               <div className="p-4 space-y-3">
