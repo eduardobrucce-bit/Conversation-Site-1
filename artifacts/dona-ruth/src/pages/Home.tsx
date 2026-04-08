@@ -27,10 +27,9 @@ export default function Home() {
       {/* HEADER / LOGO AREA */}
       <header className="absolute top-0 w-full z-50 py-4 px-6 md:px-12 flex justify-center items-center">
         <img
-          src="/logo.png"
+          src="/logo.png?v=5"
           alt="Dona Ruth Moda Plus Size"
           className="h-20 md:h-28 w-auto object-contain"
-          style={{ mixBlendMode: "multiply" }}
         />
       </header>
 
@@ -331,7 +330,6 @@ export default function Home() {
               src="/logo.png"
               alt="Dona Ruth Moda Plus Size"
               className="h-16 w-auto object-contain mb-1"
-              style={{ mixBlendMode: "multiply" }}
             />
           </div>
           
