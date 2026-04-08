@@ -15,10 +15,11 @@ const DEFAULT_PRODUCTS: Product[] = [
   { id: 3, name: "Conjunto Rosa",          tag: "Destaque",    imgs: ["/peca-3.jpg"], price: "R$ 259,90", sizes: ["P", "M", "G", "GG"] },
   { id: 4, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-4.jpg"], price: "R$ 179,90", sizes: ["P", "M", "G", "GG", "XGG"] },
   { id: 5, name: "Queridinho da Dona Ruth",tag: "Queridinho",  imgs: ["/peca-5.jpg"], price: "R$ 299,90", sizes: ["G", "GG", "XGG"] },
-  { id: 6, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-6.jpg"], price: "R$ 199,90", sizes: ["P", "M", "G", "GG", "XGG"] },
+  { id: 6, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-6.jpg"],   price: "R$ 199,90", sizes: ["P", "M", "G", "GG", "XGG"] },
+  { id: 7, name: "Óculos Dona Ruth",       tag: "Acessórios",  imgs: ["/oculos-1.jpg"], price: "R$ 0,00",   sizes: [] },
 ];
 
-const STORAGE_KEY = "dona-ruth-products-v3";
+const STORAGE_KEY = "dona-ruth-products-v4";
 
 interface ProductsContextType {
   products: Product[];
