@@ -25,10 +25,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground overflow-hidden">
       {/* HEADER / LOGO AREA */}
-      <header className="absolute top-0 w-full z-50 py-6 px-6 md:px-12 flex justify-center items-center">
-        <div className="text-3xl md:text-5xl font-serif font-bold text-foreground tracking-tight">
-          Dona Ruth
-        </div>
+      <header className="absolute top-0 w-full z-50 py-4 px-6 md:px-12 flex justify-center items-center">
+        <img
+          src="/logo.png"
+          alt="Dona Ruth Moda Plus Size"
+          className="h-20 md:h-28 w-auto object-contain"
+          style={{ mixBlendMode: "multiply" }}
+        />
       </header>
 
       {/* 1. HERO SECTION */}
@@ -324,8 +327,12 @@ export default function Home() {
       <footer className="py-12 px-6 border-t border-border bg-white text-center md:text-left">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <div className="text-2xl font-serif font-bold text-primary mb-2">Dona Ruth</div>
-            <p className="text-sm text-muted-foreground">Moda Feminina Plus Size</p>
+            <img
+              src="/logo.png"
+              alt="Dona Ruth Moda Plus Size"
+              className="h-16 w-auto object-contain mb-1"
+              style={{ mixBlendMode: "multiply" }}
+            />
           </div>
           
           <div className="text-sm text-muted-foreground">
