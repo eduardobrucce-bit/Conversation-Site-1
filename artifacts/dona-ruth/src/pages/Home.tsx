@@ -124,17 +124,24 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {[
-              { name: "Vestido Floral Plus Size", color: "from-pink-100 to-rose-200" },
-              { name: "Blusa Estampada Plus", color: "from-orange-100 to-amber-200" },
-              { name: "Calça Social Plus Size", color: "from-rose-100 to-pink-200" },
-              { name: "Conjunto Casual Plus", color: "from-stone-100 to-warm-gray-200" },
-              { name: "Vestido de Festa Plus", color: "from-red-100 to-rose-300" },
-              { name: "Saia Midi Plus Size", color: "from-peach-100 to-orange-200" }
+              { name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-1.jpg" },
+              { name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-2.jpg" },
+              { name: "Conjunto Rosa", tag: "Destaque", img: "/peca-3.jpg" },
+              { name: "Coleção In Rio", tag: "In Rio", img: "/peca-4.jpg" },
+              { name: "Queridinho da Dona Ruth", tag: "Queridinho", img: "/peca-5.jpg" },
+              { name: "Coleção In Rio", tag: "In Rio", img: "/peca-6.jpg" },
             ].map((product, i) => (
               <motion.div key={i} variants={fadeInUp} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col">
-                <div className={`aspect-[3/4] w-full bg-gradient-to-br ${product.color} relative overflow-hidden flex items-center justify-center`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                  <HeartHandshake className="w-12 h-12 text-primary/30" />
+                <div className="aspect-[3/4] w-full relative overflow-hidden">
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                  <span className="absolute top-4 left-4 bg-primary/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    {product.tag}
+                  </span>
                 </div>
                 <div className="p-6 flex flex-col items-center flex-1 text-center">
                   <h3 className="font-serif text-xl font-semibold mb-4">{product.name}</h3>
