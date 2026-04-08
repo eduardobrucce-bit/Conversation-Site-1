@@ -98,21 +98,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ABOUT SECTION */}
-      <section className="py-24 px-6 bg-white relative overflow-hidden">
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Bem-vinda à Dona Ruth</h2>
-          <div className="w-24 h-1 bg-primary/30 mx-auto mb-8 rounded-full" />
-          <p className="text-xl leading-relaxed text-muted-foreground">
-            Somos uma loja especializada em moda feminina, pensada para valorizar a autoestima e o estilo de cada mulher. Aqui você encontra roupas modernas, confortáveis e perfeitas para qualquer ocasião.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* 3. PRODUCT GALLERY */}
+      {/* 2. PRODUCT GALLERY */}
       <section className="py-24 px-6 bg-secondary/20">
         <div className="max-w-6xl mx-auto">
           <motion.div 
@@ -166,6 +152,20 @@ export default function Home() {
             ))}
           </motion.div>
         </div>
+      </section>
+
+      {/* 3. ABOUT SECTION */}
+      <section className="py-24 px-6 bg-white relative overflow-hidden">
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Bem-vinda à Dona Ruth</h2>
+          <div className="w-24 h-1 bg-primary/30 mx-auto mb-8 rounded-full" />
+          <p className="text-xl leading-relaxed text-muted-foreground">
+            Somos uma loja especializada em moda feminina, pensada para valorizar a autoestima e o estilo de cada mulher. Aqui você encontra roupas modernas, confortáveis e perfeitas para qualquer ocasião.
+          </p>
+        </motion.div>
       </section>
 
       {/* 4. DIFERENCIAIS */}
