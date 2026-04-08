@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { MessageCircle, HeartHandshake, Star, MapPin, Phone, Instagram, MapPinHouse, Store, UserCheck } from "lucide-react";
+import { useProducts } from "@/context/ProductsContext";
+import { useLocation } from "wouter";
 
 export default function Home() {
   const whatsappCarol = "https://wa.me/5562992842710";
   const whatsappVend2 = "https://wa.me/556296383761";
+  const { products } = useProducts();
+  const [, navigate] = useLocation();
   const whatsappGroup = "https://chat.whatsapp.com/JUAiUTinXPY7WCqHvEDYDd";
   const mapsLink = "https://maps.google.com/?q=R.+C-162,+282+Jardim+América+Goiânia+GO";
 
@@ -123,14 +127,7 @@ export default function Home() {
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {[
-              { name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-1.jpg" },
-              { name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", img: "/peca-2.jpg" },
-              { name: "Conjunto Rosa", tag: "Destaque", img: "/peca-3.jpg" },
-              { name: "Coleção In Rio", tag: "In Rio", img: "/peca-4.jpg" },
-              { name: "Queridinho da Dona Ruth", tag: "Queridinho", img: "/peca-5.jpg" },
-              { name: "Coleção In Rio", tag: "In Rio", img: "/peca-6.jpg" },
-            ].map((product, i) => (
+            {products.map((product, i) => (
               <motion.div key={i} variants={fadeInUp} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col">
                 <div className="aspect-[3/4] w-full relative overflow-hidden">
                   <img
@@ -358,8 +355,14 @@ export default function Home() {
             <p>R. C-162, 282 - Jardim América, Goiânia - GO</p>
           </div>
 
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground flex flex-col items-center md:items-end gap-1">
             <p>&copy; {new Date().getFullYear()} Dona Ruth. Todos os direitos reservados.</p>
+            <button
+              onClick={() => navigate("/admin")}
+              className="text-xs text-muted-foreground/40 hover:text-muted-foreground transition-colors"
+            >
+              Admin
+            </button>
           </div>
         </div>
       </footer>
