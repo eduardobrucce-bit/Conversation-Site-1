@@ -35,6 +35,15 @@ export default function Admin() {
     setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, tag: value } : p)));
   }
 
+  function handlePriceChange(id: number, value: string) {
+    setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, price: value } : p)));
+  }
+
+  function handleSizesChange(id: number, value: string) {
+    const sizes = value.split(",").map((s) => s.trim()).filter(Boolean);
+    setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, sizes } : p)));
+  }
+
   function handleImageUpload(id: number, file: File) {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -209,14 +218,45 @@ export default function Admin() {
                     className="w-full px-3 py-2 text-sm rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                 </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">Etiqueta</label>
+                    <input
+                      type="text"
+                      value={product.tag}
+                      onChange={(e) => handleTagChange(product.id, e.target.value)}
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">Preço</label>
+                    <input
+                      type="text"
+                      value={product.price}
+                      onChange={(e) => handlePriceChange(product.id, e.target.value)}
+                      placeholder="R$ 0,00"
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Etiqueta</label>
+                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    Tamanhos <span className="font-normal">(separados por vírgula)</span>
+                  </label>
                   <input
                     type="text"
-                    value={product.tag}
-                    onChange={(e) => handleTagChange(product.id, e.target.value)}
+                    value={product.sizes?.join(", ") ?? ""}
+                    onChange={(e) => handleSizesChange(product.id, e.target.value)}
+                    placeholder="P, M, G, GG, XGG"
                     className="w-full px-3 py-2 text-sm rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {product.sizes?.map((s) => (
+                      <span key={s} className="text-xs bg-secondary/50 border border-border rounded px-2 py-0.5 text-muted-foreground">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

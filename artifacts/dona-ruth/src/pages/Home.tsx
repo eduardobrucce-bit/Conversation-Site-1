@@ -140,11 +140,24 @@ export default function Home() {
                     {product.tag}
                   </span>
                 </div>
-                <div className="p-6 flex flex-col items-center flex-1 text-center">
-                  <h3 className="font-serif text-xl font-semibold mb-4">{product.name}</h3>
-                  <a 
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-serif text-lg font-semibold mb-1">{product.name}</h3>
+                  <p className="text-primary font-bold text-xl mb-3">{product.price}</p>
+                  {product.sizes && product.sizes.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {product.sizes.map((size) => (
+                        <span
+                          key={size}
+                          className="text-xs border border-border rounded-md px-2 py-0.5 text-muted-foreground font-medium"
+                        >
+                          {size}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <a
                     href={whatsappCarol} target="_blank" rel="noopener noreferrer"
-                    className="mt-auto w-full py-3 rounded-full bg-secondary/50 text-foreground font-medium hover:bg-primary hover:text-white transition-colors"
+                    className="mt-auto w-full py-3 rounded-full bg-secondary/50 text-foreground font-medium hover:bg-primary hover:text-white transition-colors text-center text-sm"
                   >
                     Tenho interesse
                   </a>
