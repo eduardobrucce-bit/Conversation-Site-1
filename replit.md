@@ -2,7 +2,7 @@
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+pnpm workspace monorepo using TypeScript. Contains the Dona Ruth Moda Feminina landing page website.
 
 ## Stack
 
@@ -15,6 +15,17 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+- **Frontend**: React + Vite, TailwindCSS, framer-motion, lucide-react, shadcn/ui
+
+## Artifacts
+
+### Dona Ruth Moda Feminina (artifacts/dona-ruth)
+- **Type**: react-vite, preview at `/`
+- **Description**: Conversion-focused landing page for Dona Ruth Moda Feminina, a plus-size women's fashion store in Goiânia, Brazil
+- **Main page**: `artifacts/dona-ruth/src/pages/Home.tsx`
+- **Features**: Hero section, About, Product Gallery, Diferenciais, Testimonials, VIP WhatsApp Group CTA, Location with Google Maps, Contact, Footer, Floating WhatsApp button
+- **WhatsApp contacts**: Carol (5562992842710), Vendedora 2 (556296383761)
+- **WhatsApp Group**: https://chat.whatsapp.com/JUAiUTinXPY7WCqHvEDYDd
 
 ## Key Commands
 

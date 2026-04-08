@@ -1,0 +1,176 @@
+Crie um site moderno, responsivo e focado em conversão para uma loja física de moda feminina plus size.
+
+Nome da loja: Dona Ruth Moda Feminina
+
+Objetivo do site:
+Atrair clientes da região de Goiânia, gerar visitas na loja física e contatos via WhatsApp.
+
+Estilo visual:
+- Feminino, elegante e moderno
+- Cores: rosa, nude, branco e detalhes em dourado
+- Tipografia sofisticada e legível
+- Layout limpo com destaque para imagens das roupas
+
+---
+
+ESTRUTURA DA PÁGINA:
+
+1. HERO (primeira dobra)
+
+Título:
+"Moda Plus Size que valoriza sua beleza 💖"
+
+Subtítulo:
+Looks incríveis, confortáveis e cheios de estilo esperando por você em Goiânia.
+
+Botões:
+- "Falar com a Vendedora"
+- "Entrar no Grupo de Novidades"
+
+Adicionar destaque:
+✔ Atendimento personalizado  
+✔ Novidades toda semana  
+✔ Moda plus size com estilo  
+
+Imagem de fundo: mulher plus size elegante (usar placeholder até inserir fotos reais)
+
+---
+
+2. SOBRE A LOJA
+
+Título:
+Bem-vinda à Dona Ruth Moda Feminina
+
+Texto:
+Somos uma loja especializada em moda feminina plus size, pensada para valorizar a autoestima e o estilo de cada mulher.
+
+Aqui você encontra roupas modernas, confortáveis e perfeitas para qualquer ocasião.
+
+---
+
+3. PRODUTOS (GALERIA)
+
+Criar uma seção em grid para imagens dos produtos.
+
+Cada item deve ter:
+- Imagem
+- Nome da peça (ex: Vestido Floral Plus Size)
+- Botão: "Tenho interesse"
+
+IMPORTANTE:
+As imagens serão adicionadas manualmente depois.
+
+---
+
+4. DIFERENCIAIS
+
+Criar cards com:
+
+- Atendimento humanizado
+- Peças selecionadas
+- Modelos que valorizam o corpo
+- Loja física em Goiânia
+
+---
+
+5. PROVA SOCIAL
+
+Título:
+Quem compra, ama 💕
+
+Adicionar depoimentos fictícios (placeholder):
+"Atendimento maravilhoso, roupas lindas!"
+"Finalmente encontrei roupas que vestem bem!"
+
+---
+
+6. GRUPO VIP
+
+Título:
+Entre no nosso grupo e receba novidades primeiro 🔥
+
+Descrição:
+Seja a primeira a ver as novas peças, promoções e lançamentos exclusivos.
+
+Botão:
+"Entrar no Grupo de WhatsApp"
+
+Link:
+https://chat.whatsapp.com/JUAiUTinXPY7WCqHvEDYDd
+
+---
+
+7. LOCALIZAÇÃO
+
+Título:
+Venha nos visitar
+
+Endereço:
+R. C-162, 282 - Quadra 263 Lote 17  
+Jardim América, Goiânia - GO  
+CEP: 74255-110
+
+Adicionar botão:
+"Abrir no Google Maps"
+
+Adicionar mapa incorporado
+
+---
+
+8. CONTATO
+
+Título:
+Fale com a gente
+
+Vendedoras:
+
+Carol:
+Botão WhatsApp com link:
+https://wa.me/5562992842710
+
+Vendedora 2:
+Botão WhatsApp com link:
+https://wa.me/556296383761
+
+Horário:
+Segunda a Sexta - 08h às 18h
+
+---
+
+9. CTA FINAL
+
+Título:
+Seu look perfeito está aqui 💖
+
+Botão grande:
+"Falar no WhatsApp agora"
+
+---
+
+10. RODAPÉ
+
+- Nome da loja
+- Endereço
+- WhatsApp
+- Direitos reservados
+
+---
+
+FUNCIONALIDADES IMPORTANTES:
+
+- Botão flutuante de WhatsApp
+- Site 100% responsivo (principal foco mobile)
+- Animações suaves ao rolar
+- Carregamento rápido
+- SEO básico (título e descrição)
+- Código limpo (HTML, CSS, JavaScript)
+
+---
+
+EXTRAS IMPORTANTES:
+
+- Otimizar para conversão local
+- Destaque forte para WhatsApp
+- Espaço para inserir logo da loja
+- Espaço para inserir fotos reais depois
+- Design que passe confiança e estilo

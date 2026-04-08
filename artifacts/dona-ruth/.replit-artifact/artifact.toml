@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Dona Ruth Moda Feminina"
+version = "1.0.0"
+id = "artifacts/dona-ruth"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21589
+
+[services.development]
+run = "pnpm --filter @workspace/dona-ruth run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dona-ruth", "run", "build" ]
+publicDir = "artifacts/dona-ruth/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21589"
+BASE_PATH = "/"
