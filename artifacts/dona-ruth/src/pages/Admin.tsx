@@ -12,7 +12,7 @@ export default function Admin() {
   const [saved, setSaved] = useState(false);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [, navigate] = useLocation();
-  const { products, updateProduct, resetProducts } = useProducts();
+  const { products, updateProduct, saveAllProducts, resetProducts } = useProducts();
   const [drafts, setDrafts] = useState<Product[]>([]);
   const [sizesTexts, setSizesTexts] = useState<Record<number, string>>({});
   const fileRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -68,8 +68,8 @@ export default function Admin() {
     );
   }
 
-  function handleSave() {
-    drafts.forEach((d) => updateProduct(d.id, d));
+  async function handleSave() {
+    await saveAllProducts(drafts);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
   }
