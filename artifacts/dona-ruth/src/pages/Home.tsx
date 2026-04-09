@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import { MessageCircle, HeartHandshake, Star, MapPin, Phone, Instagram, MapPinHouse, Store, UserCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, HeartHandshake, Star, MapPin, Phone, Instagram, MapPinHouse, Store, UserCheck, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useProducts } from "@/context/ProductsContext";
 import { useLocation } from "wouter";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function Home() {
   const whatsappCarol = "https://wa.me/5562992842710";
@@ -14,6 +14,35 @@ export default function Home() {
 
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentImgs, setCurrentImgs] = useState<Record<number, number>>({});
+
+  const [lightbox, setLightbox] = useState<{ imgs: string[]; idx: number } | null>(null);
+
+  function openLightbox(imgs: string[], idx: number) {
+    setLightbox({ imgs, idx });
+  }
+
+  function closeLightbox() {
+    setLightbox(null);
+  }
+
+  function lightboxPrev() {
+    setLightbox((lb) => lb && lb.idx > 0 ? { ...lb, idx: lb.idx - 1 } : lb);
+  }
+
+  function lightboxNext() {
+    setLightbox((lb) => lb && lb.idx < lb.imgs.length - 1 ? { ...lb, idx: lb.idx + 1 } : lb);
+  }
+
+  useEffect(() => {
+    if (!lightbox) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lightboxPrev();
+      if (e.key === "ArrowRight") lightboxNext();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox]);
 
   function getIdx(productIndex: number) {
     return currentImgs[productIndex] ?? 0;
@@ -62,6 +91,72 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground overflow-hidden">
+
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {lightbox.imgs.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); lightboxPrev(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-30"
+                  disabled={lightbox.idx === 0}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); lightboxNext(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-30"
+                  disabled={lightbox.idx === lightbox.imgs.length - 1}
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            <motion.img
+              key={lightbox.idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              src={lightbox.imgs[lightbox.idx]}
+              alt="Foto ampliada"
+              className="max-h-[90vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {lightbox.imgs.length > 1 && (
+              <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2">
+                {lightbox.imgs.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => { e.stopPropagation(); setLightbox((lb) => lb ? { ...lb, idx } : lb); }}
+                    className={`rounded-full bg-white transition-all duration-300 ${lightbox.idx === idx ? "w-5 h-2 opacity-100" : "w-2 h-2 opacity-50 hover:opacity-80"}`}
+                  />
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* HEADER / LOGO AREA */}
       <header className="absolute top-0 w-full z-50 py-4 px-6 md:px-12 flex justify-center items-center">
         <img
@@ -162,7 +257,8 @@ export default function Home() {
                         <img
                           src={img}
                           alt={product.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover cursor-zoom-in"
+                          onClick={() => openLightbox(product.imgs, idx)}
                         />
                       </div>
                     ))}
