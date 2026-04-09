@@ -161,7 +161,7 @@ export default function Home() {
                     href={whatsappCarol} target="_blank" rel="noopener noreferrer"
                     className="mt-auto w-full py-3 rounded-full bg-secondary/50 text-foreground font-medium hover:bg-primary hover:text-white transition-colors text-center text-sm"
                   >
-                    Tenho interesse
+                    Ver Mais Detalhes
                   </a>
                 </div>
               </motion.div>
