@@ -158,7 +158,8 @@ export default function Home() {
                     </div>
                   )}
                   <a
-                    href={whatsappCarol} target="_blank" rel="noopener noreferrer"
+                    href={`https://wa.me/5562992842710?text=${encodeURIComponent(`Me interessei por esse produto ${product.name}, está disponivel?`)}`}
+                    target="_blank" rel="noopener noreferrer"
                     className="mt-auto w-full py-3 rounded-full bg-secondary/50 text-foreground font-medium hover:bg-primary hover:text-white transition-colors text-center text-sm"
                   >
                     Ver Mais Detalhes
