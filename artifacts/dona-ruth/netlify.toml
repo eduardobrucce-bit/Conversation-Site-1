@@ -1,6 +1,6 @@
 [build]
-  command = "cd ../.. && NODE_ENV=production pnpm install --no-frozen-lockfile && NODE_ENV=production pnpm --filter @workspace/dona-ruth run build"
-  publish = "dist"
+  command = "NODE_ENV=production pnpm install --no-frozen-lockfile && NODE_ENV=production pnpm --filter @workspace/dona-ruth run build"
+  publish = "artifacts/dona-ruth/dist"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -8,7 +8,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  directory = "netlify/functions"
+  directory = "artifacts/dona-ruth/netlify/functions"
 
 [[redirects]]
   from = "/api/products"
