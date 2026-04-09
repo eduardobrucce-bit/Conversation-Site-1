@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { MessageCircle, HeartHandshake, Star, MapPin, Phone, Instagram, MapPinHouse, Store, UserCheck } from "lucide-react";
+import { MessageCircle, HeartHandshake, Star, MapPin, Phone, Instagram, MapPinHouse, Store, UserCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import { useProducts } from "@/context/ProductsContext";
 import { useLocation } from "wouter";
+import { useRef, useState } from "react";
 
 export default function Home() {
   const whatsappCarol = "https://wa.me/5562992842710";
@@ -10,6 +11,39 @@ export default function Home() {
   const [, navigate] = useLocation();
   const whatsappGroup = "https://chat.whatsapp.com/JUAiUTinXPY7WCqHvEDYDd";
   const mapsLink = "https://maps.google.com/?q=R.+C-162,+282+Jardim+América+Goiânia+GO";
+
+  const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [currentImgs, setCurrentImgs] = useState<Record<number, number>>({});
+
+  function getIdx(productIndex: number) {
+    return currentImgs[productIndex] ?? 0;
+  }
+
+  function scrollToImg(productIndex: number, imgIndex: number, totalImgs: number) {
+    const el = scrollRefs.current[productIndex];
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(imgIndex, totalImgs - 1));
+    el.scrollTo({ left: clamped * el.offsetWidth, behavior: "smooth" });
+    setCurrentImgs((prev) => ({ ...prev, [productIndex]: clamped }));
+  }
+
+  function handleWheel(e: React.WheelEvent, productIndex: number, totalImgs: number) {
+    if (totalImgs <= 1) return;
+    e.preventDefault();
+    const current = getIdx(productIndex);
+    if (e.deltaY > 0 || e.deltaX > 0) {
+      scrollToImg(productIndex, current + 1, totalImgs);
+    } else {
+      scrollToImg(productIndex, current - 1, totalImgs);
+    }
+  }
+
+  function handleScroll(e: React.UIEvent<HTMLDivElement>, productIndex: number) {
+    const el = e.currentTarget;
+    if (el.offsetWidth === 0) return;
+    const idx = Math.round(el.scrollLeft / el.offsetWidth);
+    setCurrentImgs((prev) => ({ ...prev, [productIndex]: idx }));
+  }
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -117,8 +151,11 @@ export default function Home() {
               <motion.div key={i} variants={fadeInUp} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col">
                 <div className="aspect-[3/4] w-full relative overflow-hidden">
                   <div
+                    ref={(el) => { scrollRefs.current[i] = el; }}
                     className="flex h-full overflow-x-auto snap-x snap-mandatory touch-pan-x"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+                    onScroll={(e) => handleScroll(e, i)}
+                    onWheel={(e) => handleWheel(e, i, product.imgs.length)}
                   >
                     {product.imgs.map((img, idx) => (
                       <div key={idx} className="shrink-0 w-full h-full snap-start">
@@ -135,11 +172,30 @@ export default function Home() {
                     {product.tag}
                   </span>
                   {product.imgs.length > 1 && (
-                    <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 pointer-events-none">
-                      {product.imgs.map((_, idx) => (
-                        <div key={idx} className="w-1.5 h-1.5 rounded-full bg-white shadow-sm opacity-80" />
-                      ))}
-                    </div>
+                    <>
+                      <button
+                        onClick={() => scrollToImg(i, getIdx(i) - 1, product.imgs.length)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 hidden md:flex"
+                        aria-label="Foto anterior"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => scrollToImg(i, getIdx(i) + 1, product.imgs.length)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/60 hidden md:flex"
+                        aria-label="Próxima foto"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 pointer-events-none">
+                        {product.imgs.map((_, idx) => (
+                          <div
+                            key={idx}
+                            className={`h-1.5 rounded-full bg-white shadow-sm transition-all duration-300 ${getIdx(i) === idx ? "w-4 opacity-100" : "w-1.5 opacity-60"}`}
+                          />
+                        ))}
+                      </div>
+                    </>
                   )}
                 </div>
                 <div className="p-5 flex flex-col flex-1">
