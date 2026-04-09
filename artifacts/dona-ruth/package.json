@@ -73,5 +73,11 @@
     "vite": "catalog:",
     "wouter": "^3.3.5",
     "zod": "catalog:"
+  },
+  "dependencies": {
+    "@netlify/functions": "^5.1.5",
+    "@types/pg": "^8.18.0",
+    "drizzle-orm": "catalog:",
+    "pg": "^8.20.0"
   }
 }
