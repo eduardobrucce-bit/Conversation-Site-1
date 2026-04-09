@@ -14,6 +14,7 @@ export default function Admin() {
   const [, navigate] = useLocation();
   const { products, updateProduct, resetProducts } = useProducts();
   const [drafts, setDrafts] = useState<Product[]>([]);
+  const [sizesTexts, setSizesTexts] = useState<Record<number, string>>({});
   const fileRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   function handleLogin(e: React.FormEvent) {
@@ -21,6 +22,7 @@ export default function Admin() {
     if (password === ADMIN_PASSWORD) {
       setAuthed(true);
       setDrafts(products.map((p) => ({ ...p })));
+      setSizesTexts(Object.fromEntries(products.map((p) => [p.id, p.sizes?.join(", ") ?? ""])));
       setError("");
     } else {
       setError("Senha incorreta. Tente novamente.");
@@ -40,6 +42,7 @@ export default function Admin() {
   }
 
   function handleSizesChange(id: number, value: string) {
+    setSizesTexts((prev) => ({ ...prev, [id]: value }));
     const sizes = value.split(",").map((s) => s.trim()).filter(Boolean);
     setDrafts((prev) => prev.map((p) => (p.id === id ? { ...p, sizes } : p)));
   }
@@ -279,7 +282,7 @@ export default function Admin() {
                   </label>
                   <input
                     type="text"
-                    value={product.sizes?.join(", ") ?? ""}
+                    value={sizesTexts[product.id] ?? product.sizes?.join(", ") ?? ""}
                     onChange={(e) => handleSizesChange(product.id, e.target.value)}
                     placeholder="P, M, G, GG, XGG"
                     className="w-full px-3 py-2 text-sm rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/30"
