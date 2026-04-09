@@ -50,9 +50,9 @@ productsRouter.put("/products", async (req, res) => {
         });
     }
 
-    res.json({ ok: true });
+    return res.json({ ok: true });
   } catch (err) {
-    res.status(500).json({ error: "Erro ao salvar produtos" });
+    return res.status(500).json({ error: "Erro ao salvar produtos" });
   }
 });
 
