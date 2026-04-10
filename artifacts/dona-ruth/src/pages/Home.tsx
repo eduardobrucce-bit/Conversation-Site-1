@@ -90,7 +90,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background font-sans text-foreground">
 
       {/* LIGHTBOX */}
       <AnimatePresence>
