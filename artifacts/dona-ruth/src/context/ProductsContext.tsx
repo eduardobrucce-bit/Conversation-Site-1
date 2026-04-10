@@ -17,9 +17,11 @@ const DEFAULT_PRODUCTS: Product[] = [
   { id: 5, name: "Queridinho da Dona Ruth",tag: "Queridinho",  imgs: ["/peca-5.jpg"], price: "R$ 299,90", sizes: ["G", "GG", "XGG"] },
   { id: 6, name: "Coleção In Rio",         tag: "In Rio",      imgs: ["/peca-6.jpg"],   price: "R$ 199,90", sizes: ["P", "M", "G", "GG", "XGG"] },
   { id: 7, name: "Óculos Dona Ruth",       tag: "Acessórios",  imgs: ["/oculos-1.jpg"], price: "R$ 0,00",   sizes: [] },
+  { id: 8, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-1.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 9, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-2.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
 ];
 
-const STORAGE_KEY = "dona-ruth-products-v4";
+const STORAGE_KEY = "dona-ruth-products-v5";
 const API_URL = "/api/products";
 
 function normalizeProducts(raw: (Product & { img?: string })[]): Product[] {
