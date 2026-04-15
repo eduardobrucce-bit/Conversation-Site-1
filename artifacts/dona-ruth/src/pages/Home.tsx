@@ -10,7 +10,7 @@ export default function Home() {
   const { products } = useProducts();
   const [, navigate] = useLocation();
   const whatsappGroup = "https://chat.whatsapp.com/JUAiUTinXPY7WCqHvEDYDd";
-  const mapsLink = "https://maps.google.com/?q=R.+C-162,+282+Jardim+América+Goiânia+GO";
+  const mapsLink = "https://maps.google.com/?q=R.+C-162,+Quadra+263+Lote+17+Jardim+América+Goiânia+GO";
 
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentImgs, setCurrentImgs] = useState<Record<number, number>>({});
@@ -440,7 +440,7 @@ export default function Home() {
             <div className="flex items-start gap-4 mb-6">
               <MapPinHouse className="w-6 h-6 text-primary shrink-0 mt-1" />
               <div>
-                <p className="text-lg mb-4">R. C-162, 282 - Quadra 263 Lote 17<br/>Jardim América, Goiânia - GO<br/>CEP: 74255-110</p>
+                <p className="text-lg mb-4">R. C-162, Quadra 263 Lote 17<br/>Jardim América, Goiânia - GO<br/>CEP: 74255-110</p>
                 <a 
                   href={mapsLink} target="_blank" rel="noopener noreferrer"
                   className="text-primary font-semibold hover:underline inline-flex items-center gap-1"
@@ -548,7 +548,7 @@ export default function Home() {
           </div>
           
           <div className="text-sm text-muted-foreground">
-            <p>R. C-162, 282 - Jardim América, Goiânia - GO</p>
+            <p>R. C-162, Quadra 263 Lote 17 - Jardim América, Goiânia - GO</p>
           </div>
 
           <div className="text-sm text-muted-foreground flex flex-col items-center md:items-end gap-1">
