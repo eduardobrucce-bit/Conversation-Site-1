@@ -232,10 +232,26 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">Nossas Peças</h2>
             <p className="text-lg text-muted-foreground">Estilo e conforto do tamanho da sua beleza</p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+            className="flex justify-center mb-12"
+          >
+            <motion.a
+              href="https://drive.google.com/drive/folders/1OaoeiA4y8CJ939jJHzhV8WZhwO8jV10p"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-primary text-white font-semibold text-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-colors"
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Acesse o Catálogo Completo
+            </motion.a>
           </motion.div>
 
           <motion.div 
