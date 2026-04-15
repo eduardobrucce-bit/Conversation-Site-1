@@ -19,6 +19,11 @@ const DEFAULT_PRODUCTS: Product[] = [
   { id: 7, name: "Óculos Dona Ruth",       tag: "Acessórios",  imgs: ["/oculos-1.jpg"], price: "R$ 0,00",   sizes: [] },
   { id: 8, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-1.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
   { id: 9, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-2.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 10, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-3.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 11, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-4.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 12, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-5.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 13, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-6.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
+  { id: 14, name: "Nova Coleção Dona Ruth", tag: "Nova Coleção", imgs: ["/peca-1.jpg"], price: "R$ 0,00", sizes: ["P", "M", "G", "GG"] },
 ];
 
 const STORAGE_KEY = "dona-ruth-products-v5";
